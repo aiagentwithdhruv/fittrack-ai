@@ -4,6 +4,18 @@ AI-powered fitness tracker that counts exercise reps using your camera and analy
 
 ![FitTrack AI](https://img.shields.io/badge/FitTrack-AI-00ff88?style=for-the-badge) ![PWA](https://img.shields.io/badge/PWA-Installable-blue?style=for-the-badge) ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
+**Live:** [fitness.aiwithdhruv.com](https://fitness.aiwithdhruv.com)
+
+## Screenshots
+
+| Workout (AI Pose Detection) | Dashboard & Targets |
+|:--:|:--:|
+| ![Workout](screenshots/workout-active.png) | ![Dashboard](screenshots/dashboard.png) |
+
+| Food Scanner (AI Analysis) | Settings & Export |
+|:--:|:--:|
+| ![Nutrition](screenshots/nutrition-result.png) | ![Settings](screenshots/settings.png) |
+
 ## What It Does
 
 | Feature | How It Works |

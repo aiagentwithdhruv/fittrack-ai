@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react'
 import { db, getStat } from '../db'
 import { getLevel, calculateStreak, getUnlockedBadges, BADGES, type BadgeStats } from '../engine/gamification'
-import { Flame, Trophy, Zap, TrendingUp, Utensils } from 'lucide-react'
+import { Flame, Trophy, Zap } from 'lucide-react'
 
 export default function Dashboard() {
   const [totalXP, setTotalXP] = useState(0)
   const [streak, setStreak] = useState({ current: 0, longest: 0 })
   const [totalReps, setTotalReps] = useState(0)
-  const [totalWorkouts, setTotalWorkouts] = useState(0)
   const [todayReps, setTodayReps] = useState(0)
   const [todayCals, setTodayCals] = useState(0)
-  const [totalMeals, setTotalMeals] = useState(0)
   const [todayProtein, setTodayProtein] = useState(0)
   const [unlockedBadges, setUnlockedBadges] = useState<string[]>([])
   const [heatmap, setHeatmap] = useState<Record<string, number>>({})
@@ -27,14 +25,11 @@ export default function Dashboard() {
       const dates = workouts.map(w => w.date)
       setStreak(calculateStreak(dates))
       setTotalReps(workouts.reduce((s, w) => s + w.reps, 0))
-      setTotalWorkouts(new Set(dates).size)
-
       const today = new Date().toISOString().split('T')[0]
       setTodayReps(workouts.filter(w => w.date === today).reduce((s, w) => s + w.reps, 0))
 
       // Nutrition
       const meals = await db.nutrition.toArray()
-      setTotalMeals(meals.length)
       const todayMeals = meals.filter(m => m.date === today)
       setTodayCals(todayMeals.reduce((s, m) => s + m.calories, 0))
       setTodayProtein(todayMeals.reduce((s, m) => s + m.protein, 0))
