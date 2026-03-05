@@ -7,7 +7,7 @@ import SettingsPage from './pages/Settings'
 
 export default function App() {
   return (
-    <div className="min-h-screen pb-16">
+    <div className="min-h-screen bg-[var(--color-deep-space)]">
       <Routes>
         <Route path="/" element={<Workout />} />
         <Route path="/dashboard" element={<Dashboard />} />

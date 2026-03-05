@@ -10,21 +10,39 @@ const links = [
 
 export default function NavBar() {
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-[var(--color-card)] border-t border-[var(--color-border)] flex justify-around py-2 px-4 z-50 safe-area-bottom">
-      {links.map(({ to, icon: Icon, label }) => (
-        <NavLink
-          key={to}
-          to={to}
-          className={({ isActive }) =>
-            `flex flex-col items-center gap-0.5 text-[0.65rem] transition-colors ${
-              isActive ? 'text-[var(--color-accent)]' : 'text-[var(--color-dim)]'
-            }`
-          }
-        >
-          <Icon size={20} />
-          {label}
-        </NavLink>
-      ))}
+    <nav
+      className="fixed bottom-0 left-0 right-0 z-50 border-t border-[var(--color-steel-dark)]"
+      style={{
+        background: 'linear-gradient(to top, #0a0a0f 0%, #141418 100%)',
+        paddingBottom: 'env(safe-area-inset-bottom)',
+      }}
+    >
+      <div className="flex h-[60px]">
+        {links.map(({ to, icon: Icon, label }) => (
+          <NavLink
+            key={to}
+            to={to}
+            className={({ isActive }) =>
+              `nav-tab flex-1 flex flex-col items-center justify-center gap-1 ${
+                isActive ? 'active' : 'text-[var(--color-text-muted)]'
+              }`
+            }
+          >
+            {({ isActive }) => (
+              <>
+                <Icon
+                  size={22}
+                  className={isActive ? 'text-[var(--color-cyan)]' : ''}
+                  style={isActive ? { filter: 'drop-shadow(0 0 8px rgba(0, 200, 232, 0.6))' } : {}}
+                />
+                <span className={`text-[10px] font-medium ${isActive ? 'text-[var(--color-cyan)]' : ''}`}>
+                  {label}
+                </span>
+              </>
+            )}
+          </NavLink>
+        ))}
+      </div>
     </nav>
   )
 }
