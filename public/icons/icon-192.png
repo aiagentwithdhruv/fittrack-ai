@@ -1,0 +1,6 @@
+cat > public/icons/icon-512.png << /dev/null
+
+# Remove old App.css
+rm -f src/App.css
+
+echo "Assets done"
